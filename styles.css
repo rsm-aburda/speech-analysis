@@ -1,0 +1,89 @@
+/* Apply your chosen color scheme here */
+:root {
+    --background-color: #1D1d41; /* Replace with your choice */
+    --primary-accent: #00FF87;
+    --secondary-accent: #FF00D4;
+    --text-color: #E5E5E5;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+  }
+  
+  .header {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+  
+  .main-content {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .upload-section {
+    text-align: center;
+  }
+  
+  .file-input {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    border: 2px dashed var(--secondary-accent);
+    background-color: transparent;
+    color: var(--text-color);
+    border-radius: 5px;
+  }
+  
+  .upload-button {
+    padding: 10px 20px;
+    background-color: var(--background-color);
+    border: none;
+    border-radius: 5px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .upload-button:hover {
+    background-color: var(--secondary-accent);
+  }
+  
+  .sidebar {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    color: var(--text-color);
+  }
+  
+  .sidebar h3 {
+    margin-top: 0;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    margin: 10px 0;
+  }
+  
+  
