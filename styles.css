@@ -170,3 +170,10 @@
       padding: 12px; /* Adjusted padding */
     }
   } 
+  .error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    display: none; /* Initially hidden */
+  }
+  
