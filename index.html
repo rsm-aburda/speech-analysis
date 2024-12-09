@@ -33,9 +33,11 @@
         <form id="uploadForm">
           <!-- Custom "Choose File" Button -->
           <label class="custom-file-label" for="fileInput">Choose File</label>
-          <input type="file" name="file" id="fileInput" class="file-input" required>
+          <input type="file" name="file" id="fileInput" class="file-input" accept="audio/*,video/*" required>
           <!-- Display selected file name -->
           <p class="selected-file" id="fileName">No file chosen</p>
+          <!-- Error message -->
+          <p class="error-message" id="errorMessage"></p>
           <!-- Submit button -->
           <button type="submit" class="upload-button">Upload</button>
         </form>
@@ -44,12 +46,44 @@
   </div>
 
   <script>
-    // Show selected file name
+    // Show selected file name and validate file type
     document.getElementById("fileInput").addEventListener("change", function () {
-      const fileName = this.files[0] ? this.files[0].name : "No file chosen";
-      document.getElementById("fileName").textContent = fileName;
+      const file = this.files[0];
+      const errorMessage = document.getElementById("errorMessage");
+      const fileName = document.getElementById("fileName");
+
+      // Reset the error message
+      errorMessage.textContent = "";
+      errorMessage.style.display = "none";
+
+      if (file) {
+        // Allowed MIME types for audio and video
+        const allowedTypes = ["audio/", "video/"];
+        const fileType = file.type;
+
+        // Check if the file type starts with "audio/" or "video/"
+        if (!allowedTypes.some(type => fileType.startsWith(type))) {
+          errorMessage.textContent = "Please upload a valid audio or video file.";
+          errorMessage.style.display = "block";
+          this.value = ""; // Clear the invalid file
+          fileName.textContent = "No file chosen";
+        } else {
+          fileName.textContent = file.name; // Show the selected file name
+        }
+      }
+    });
+
+    // Prevent form submission if no valid file is selected
+    document.getElementById("uploadForm").addEventListener("submit", function (event) {
+      const file = document.getElementById("fileInput").files[0];
+      const errorMessage = document.getElementById("errorMessage");
+
+      if (!file) {
+        event.preventDefault();
+        errorMessage.textContent = "Please select a file to upload.";
+        errorMessage.style.display = "block";
+      }
     });
   </script>
 </body>
 </html>
-
