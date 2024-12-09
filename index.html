@@ -3,32 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>File Upload Page</title>
+  <title>Speech Analysis Tool</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
+    <!-- Header Section -->
     <header class="header">
       <h1>Speech Analysis Tool</h1>
       <p>Quickly Count the Amount of Filler Words You Use During a Speech</p>
     </header>
+
+    <!-- Sidebar Section -->
+    <aside class="sidebar">
+      <h3>Future Functions</h3>
+      <ul>
+        <li><a href="#">Real-Time Speech Word Counter</a></li>
+        <li><a href="#">Video Support Feature</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">More to come...</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content Section -->
     <main class="main-content">
       <div class="upload-section">
         <h2>Upload Your Voice Memo</h2>
+        <!-- Custom file input -->
         <form id="uploadForm">
+          <!-- Custom "Choose File" Button -->
+          <label class="custom-file-label" for="fileInput">Choose File</label>
           <input type="file" name="file" id="fileInput" class="file-input" required>
+          <!-- Display selected file name -->
+          <p class="selected-file" id="fileName">No file chosen</p>
+          <!-- Submit button -->
           <button type="submit" class="upload-button">Upload</button>
         </form>
       </div>
     </main>
-    <aside class="sidebar">
-      <h3>Future Functions</h3>
-      <ul>
-        <li>Why Analyze Your Speech?</li>
-        <li>FAQ</li>
-        <li>More to come...</li>
-      </ul>
-    </aside>
   </div>
+
+  <script>
+    // Show selected file name
+    document.getElementById("fileInput").addEventListener("change", function () {
+      const fileName = this.files[0] ? this.files[0].name : "No file chosen";
+      document.getElementById("fileName").textContent = fileName;
+    });
+  </script>
 </body>
 </html>
+
